@@ -6,6 +6,13 @@ saludar=function(){
     let estatura=recuperarFloat("txtEstatura");
     let mensajeBienvendida="Bienvenido "+nombre+" "+apellido;
     mostrarTexto("lblResultado",mensajeBienvendida);
+    mostrarImagen("imgSaludo","./imagenes/saludos.gif");
+}
+
+mostrarImagen=function(idComponente,rutaImagen){
+    let componente;
+    componente=document.getElementById(idComponente);
+    componente.src= rutaImagen;
 }
 
 mostrarTexto=function(idComponente,mensaje){
