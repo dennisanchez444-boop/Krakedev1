@@ -19,4 +19,14 @@ validarPlaca = function () {
     } else {
         mostrarTexto("lblTipo", "Tipo de vehiculo es: " + tipo);
     }
+    let picoP = obtenerDiaPicoYPlaca(valores);
+    if (picoP) {
+        mostrarTexto("lblDiaPicoYPlaca", " EL dia de Pico Y Placa es: " + picoP);
+    } else {
+        mostrarTexto("lblDatos", " Estructura Incorrecta ");
+        mostrarTexto("lblError", erroresEstructura);
+        mostrarTexto("lblProvincias", "");
+        mostrarTexto("lblTipo", "");
+        mostrarTexto("lblDiaPicoYPlaca", "");
+    }
 }

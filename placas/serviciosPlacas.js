@@ -138,3 +138,26 @@ obtenerTidoDeVehiculo = function (placa) {
 
 }
 
+obtenerDiaPicoYPlaca = function (placa) {
+    let diaPico;
+    let diaNoSalida;
+    let ultimaPosicion = placa.length - 1;
+    diaPico = placa.charAt(ultimaPosicion);
+
+    if (diaPico == 1 || diaPico == 2) {
+        diaNoSalida = "LUNES";
+    }
+    else if (diaPico == 3 || diaPico == 4) {
+        diaNoSalida = "MARTES"
+    }
+    else if (diaPico == 5 || diaPico == 6) {
+        diaNoSalida = "MIERCOLES"
+    }
+    else if (diaPico == 7 || diaPico == 8) {
+        diaNoSalida = "JUEVES"
+    }
+    else {
+        diaNoSalida = "VIERNES"
+    }
+    return diaNoSalida;
+}
