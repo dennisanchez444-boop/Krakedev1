@@ -30,3 +30,12 @@ validarPlaca = function () {
         mostrarTexto("lblDiaPicoYPlaca", "");
     }
 }
+
+limpiar = function () {
+    mostrarTextoEnCaja("txtValor", "");
+    mostrarTexto("lblDatos", "");
+    mostrarTexto("lblError", "");
+    mostrarTexto("lblProvincias", "");
+    mostrarTexto("lblTipo", "");
+    mostrarTexto("lblDiaPicoYPlaca", "");
+}
