@@ -1,0 +1,19 @@
+body{
+    background-image: url(./imagenes/fondo.png);
+    background-size: cover;
+}
+.imagenes{
+    margin: 2%;
+}
+.titulo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 200px;
+}
+.resp{
+    color: brown;
+    margin-left: 100px;
+    font-size: medium;
+}
+.alt{
+    margin-left: 100px;
+}
