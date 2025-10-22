@@ -1,6 +1,24 @@
 body{
-    background-color: rgb(76, 119, 119);
+    background-image: url(placas.jpg);
+    background-size: cover;
+}
+.dato{
+    color: #b4c616;
+    font-size: 50px;
+    margin-left: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.caja{
+    margin-left: 50px;
+}
+.buttom{
+    margin: 30px;
+    margin-left: 50px;
 }
 .datos{
-    font-size: mediums;
+    color: rgb(255, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-left: 50px;
+    
 }

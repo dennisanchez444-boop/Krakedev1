@@ -30,5 +30,5 @@ validarEstructura = function (placa) {
     } else {
         errores = errores + "La cantidad de caracteres es incorrecta";
     }
-    return errores;
+    return errores;
 }
