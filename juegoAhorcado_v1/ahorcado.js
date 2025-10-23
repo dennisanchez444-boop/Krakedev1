@@ -28,8 +28,41 @@ guardarPalabra = function () {
     } else {
         alert("La palabra debe tener exactamente 5 letras");
     }
-    palabraSecreta=letras;
+    palabraSecreta = letras;
 }
 
+mostrarLetra = function (letra, posicion) {
+    if (posicion == 0) {
+        mostrarTextoEnCaja("div0", letra);
+    } else if (posicion == 1) {
+        mostrarTextoEnCaja("div1", letra);
+    } else if (posicion == 2) {
+        mostrarTextoEnCaja("div2", letra);
+    } else if (posicion == 3) {
+        mostrarTextoEnCaja("div3", letra);
+    } else if (posicion == 4) {
+        mostrarTextoEnCaja("div4", letra);
+    }
+}
 
+validar = function (letra) {
+    let letrasEncontradas = 0;
+    for (let i = 0; i < palabraSecreta.length; i++) {
+        if (palabraSecreta.charAt(i) == letra) {
+            mostrarLetra(letra,i);
+            letrasEncontradas = letrasEncontradas;
+        }
+    }
+}
+
+ingresarLetra = function () {
+    let letra = recuperarTexto("txtLetra");
+    let cor = esMayuscula(letra);
+    if (cor == true) {
+        validar(letra);
+    } else {
+        alert("SOLO SE ACEPTAN MAYUSCULAS");
+        validar();
+    }
+}
 
