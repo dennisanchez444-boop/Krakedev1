@@ -18,5 +18,5 @@ mostrarOpcionRol=function(){
 mostarOpcionResumen=function(){
     mostrarComponente("divResumen");
     ocultarComponente("divEmpleado");
-    ocultarComponente("divResumen");
+    ocultarComponente("divRol");
 }
