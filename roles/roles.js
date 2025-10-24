@@ -4,8 +4,6 @@ let empleados = [
     { cedula: "1498654323", nombre: "Carlos", apellido: "Perez", sueldo: 700.0 }
 ]
 
-let esNuevo = false;
-
 mostrarOpcionEmpleado = function () {
     mostrarComponente("divEmpleado");
     ocultarComponente("divRol");
@@ -33,14 +31,14 @@ mostrarEmpleado = function () {
         "<th>APELLIDO</th>" +
         "<th>EDAD</th>" +
         "</tr>";;
-    let elementosCliente;
+    let elementosEmpleado;
     for (let i = 0; i < empleados.length; i++) {
-        elementosCliente = empleados[i];
+        elementosEmpleado = empleados[i];
         contenidoTabla +=
-            "<tr><td>" + elementosCliente.cedula + "</td>"
-            + "<td>" + elementosCliente.nombre + "</td>"
-            + "<td>" + elementosCliente.apellido + "</td>"
-            + "<td>" + elementosCliente.sueldo + "</td>"
+            "<tr><td>" + elementosEmpleado.cedula + "</td>"
+            + "<td>" + elementosEmpleado.nombre + "</td>"
+            + "<td>" + elementosEmpleado.apellido + "</td>"
+            + "<td>" + elementosEmpleado.sueldo + "</td>"
             + "</tr>"
     }
     contenidoTabla += "</table>"
@@ -53,5 +51,87 @@ ejectutarNuevo = function () {
     deshabilitarComponente("txtApellido");
     deshabilitarComponente("txtSueldo");
     deshabilitarComponente("btnGuardar");
-    esNuevo==true;
+}
+
+buscarEmpleado = function (cedula) {
+    let elementoEmpleado;
+    let empleadoEncontrado = null;
+    for (let i = 0; i < empleados.length; i++) {
+        elementoEmpleado = empleados[i];
+        if (elementoEmpleado.cedula == cedula) {
+            empleadoEncontrado = elementoEmpleado;
+            break;
+        }
+    }
+    return empleadoEncontrado;
+}
+
+agregarEmpleado = function (empleado) {
+    let resultado = buscarEmpleado(empleado.cedula);
+    if (resultado == null) {
+        empleados.push(empleado);
+        return true;
+    } else {
+        return false;
+    }
+    
+}
+
+guardar = function () {
+    let valorCedula = recuperarTexto("txtCedula");
+    let valorNombre = recuperarTexto("txtNombre");
+    let valorApellido = recuperarTexto("txtApellido");
+    let valorSueldo = recuperarFloat("txtSueldo");
+    let valido = false;
+    //Cedula
+    if (valorCedula.length == 10) {
+        valido = true;
+    } else {
+        mostrarTexto("lblErrorCedula", "Debe tener 10 digitos");
+    }
+    let cedula = valorCedula.charCodeAt(0);
+    if (cedula >= 48 && cedula <= 57) {
+        valido = true
+    } else {
+        mostrarTexto("lblErrorCedula", "Debe ser un numero del 0 al 9")
+    }
+    //Nombre
+    if (valorNombre.length < 3) {
+        mostrarTexto("lblErrorNombre", "El nombre debe tener al menos 3 caracteres");
+    }
+    let nombre = valorNombre.charCodeAt(0)
+    if (nombre >= 65 && nombre <= 90) {
+        valido = true;
+    } else {
+        mostrarTexto("lblErrorNombre", "Deben ser letras mayusculas");
+    }
+    //Apelido
+    if (valorApellido.length < 3) {
+        mostrarTexto("lblErrorNombre", "El nombre debe tener al menos 3 caracteres");
+    }
+    let apellido = valorApellido.charCodeAt(0)
+    if (apellido >= 65 && apellido <= 90) {
+        valido = true;
+    } else {
+        mostrarTexto("lblErrorApellido", "Deben ser letras mayusculas");
+    }
+    //Saldo
+    if (valorSueldo >= 400 && valorSueldo <= 5000) {
+        valido = true;
+    }
+
+    let nuevoEmpleado=null;
+        let empleado = {};
+        empleado.cedula = valorCedula;
+        empleado.nombre = valorNombre;
+        empleado.apellido = valorApellido;
+        empleado.sueldo = valorSueldo;
+        console.log("hOLA",empleado);
+        nuevoEmpleado=agregarEmpleado(empleado);
+    if (nuevoEmpleado) {
+        alert("EMPLEADO GUARDADO CORRECTAMENTE");
+        mostrarEmpleado();
+    } else {
+        mostrarTexto("lblErrorBusqueda", "Ya existe un empleado con la cedula :" + cedula);
+    }
 }

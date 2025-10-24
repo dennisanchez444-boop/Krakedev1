@@ -85,11 +85,11 @@ tbody tr:nth-child(odd) {
   tbody tr:nth-child(even) {
     background-color: #6a51cf;
   }
-  
+  /*
   tbody tr {
     background-image: url(noise.png);
   }
-  
+  */
   table {
     background-color: #0b0c0c;
     width: 100%;
