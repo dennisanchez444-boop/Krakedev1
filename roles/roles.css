@@ -94,11 +94,19 @@ tbody tr:nth-child(odd) {
     background-color: #0b0c0c;
     width: 100%;
   }
+  
+  th{
+    color: #ffffff7e;
+    text-transform: uppercase;
+    padding: 10px;
+  }
+  
   td{
     text-align: center;
   }
   .areaTabla{
     margin-top: 20px;
+    font-size: 20px;
   }
 .estiloBoton:hover {
     background-color:white; 
