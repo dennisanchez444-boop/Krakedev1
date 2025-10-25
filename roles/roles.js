@@ -133,7 +133,7 @@ guardar = function () {
         mostrarEmpleado();
     } else {
         mostrarTexto("lblErrorBusqueda", "Ya existe un empleado con la cedula :" + cedula);
-        let busquedas=buscarEmpleado();
+        let busquedas = buscarEmpleado();
         deshabilitarComponente("txtCedula");
         deshabilitarComponente("txtNombre");
         deshabilitarComponente("txtApellido");
@@ -153,4 +153,17 @@ ejecutarBusqueda = function () {
     habilitarComponente("txtNombre");
     habilitarComponente("txtApellido");
     habilitarComponente("txtSueldo");
+}
+
+limiar = function () {
+    mostrarTextoEnCaja("txtCedula", "");
+    mostrarTextoEnCaja("txtNombre", "");
+    mostrarTextoEnCaja("txtApellido", "");
+    mostrarTextoEnCaja("txtSueldo", "");
+    deshabilitarComponente("txtCedula");
+    deshabilitarComponente("txtNombre");
+    deshabilitarComponente("txtApellido");
+    deshabilitarComponente("txtSueldo");
+    deshabilitarComponente("btnGuardar");
+
 }
