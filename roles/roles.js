@@ -74,7 +74,7 @@ agregarEmpleado = function (empleado) {
     } else {
         return false;
     }
-    
+
 }
 
 guardar = function () {
@@ -120,18 +120,37 @@ guardar = function () {
         valido = true;
     }
 
-    let nuevoEmpleado=null;
-        let empleado = {};
-        empleado.cedula = valorCedula;
-        empleado.nombre = valorNombre;
-        empleado.apellido = valorApellido;
-        empleado.sueldo = valorSueldo;
-        console.log("hOLA",empleado);
-        nuevoEmpleado=agregarEmpleado(empleado);
+    let nuevoEmpleado = null;
+    let empleado = {};
+    empleado.cedula = valorCedula;
+    empleado.nombre = valorNombre;
+    empleado.apellido = valorApellido;
+    empleado.sueldo = valorSueldo;
+    console.log("hOLA", empleado);
+    nuevoEmpleado = agregarEmpleado(empleado);
     if (nuevoEmpleado) {
         alert("EMPLEADO GUARDADO CORRECTAMENTE");
         mostrarEmpleado();
     } else {
         mostrarTexto("lblErrorBusqueda", "Ya existe un empleado con la cedula :" + cedula);
+        let busquedas=buscarEmpleado();
+        deshabilitarComponente("txtCedula");
+        deshabilitarComponente("txtNombre");
+        deshabilitarComponente("txtApellido");
+        deshabilitarComponente("txtSueldo");
+        deshabilitarComponente("btnGuardar");
     }
+}
+
+ejecutarBusqueda = function () {
+    let datoBusqueda = recuperarTexto("txtBusquedaCedula");
+    let cedulaBuscada = ejecutarBusqueda(datoBusqueda);
+    if (cedulaBuscada == false) {
+        alert("EMPLEADO NO EXISTE");
+    } else {
+        mostrarTexto("lblErrorBusqueda", +empleados);
+    }
+    habilitarComponente("txtNombre");
+    habilitarComponente("txtApellido");
+    habilitarComponente("txtSueldo");
 }
