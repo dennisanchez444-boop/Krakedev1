@@ -3,6 +3,9 @@ let empleados = [
     { cedula: "0914632123", nombre: "Luisa", apellido: "Gonzalez", sueldo: 900.0 },
     { cedula: "1498654323", nombre: "Carlos", apellido: "Perez", sueldo: 700.0 }
 ];
+let roles = [];
+let rol = [];
+
 
 // ======= Mostrar secciones =======
 mostrarOpcionEmpleado = function () {
@@ -153,5 +156,46 @@ limpiar = function () {
     mostrarTextoEnCaja("txtCedula", "");
     mostrarTextoEnCaja("txtNombre", "");
     mostrarTextoEnCaja("txtApellido", "");
-    mostrarTextoEnCaja("txtSueldo", "");
+    mostrarTextoEnCaja("txtSueldo", "");
+}
+
+buscarRol = function (cedula) {
+    let cedulaRecuperada = recuperarTexto("txtBusquedaCedulaRol");
+    if (cedulaRecuperada == cedula) {
+        return cedulaRecuperada;
+    } else {
+        return null;
+    }
+}
+
+agregarRol = function (rol) {
+    if (rol != cedula) {
+        mostrarTexto("lblErrorBusquedaRol", "Exito");
+    } else {
+        mostrarTexto("lblErrorBusquedaRol", "Error");
+    }
+}
+
+calcularAporteEmpleador = function (sueldo) {
+    let aporte = sueldo * 0.15;
+    return aporte;
+}
+
+guardarRol = function () {
+    recuperarFloat("infoPago");
+    recuperarFloat("infoIESS");
+    recuperarFloat("infoNombre");
+    recuperarFloat("infoCedula");
+    recuperarFloat("infoSueldo");
+
+    let aporteEmpleador = calcularAporteEmpleador(sueldo);
+    let rol = {};
+    rol.cedula=cedula;
+    rol.nombre=nombre;
+    rol.sueldo=sueldo;
+    rol.agregarEmpleado=aporteEmpleador;
+
+    roles.push(rol);
+    mostrarTexto("lblErrorDescuentos","EXITO");
+    deshabilitarComponente("btnGuardar");
 }
