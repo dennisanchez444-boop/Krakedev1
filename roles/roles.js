@@ -165,5 +165,16 @@ limiar = function () {
     deshabilitarComponente("txtApellido");
     deshabilitarComponente("txtSueldo");
     deshabilitarComponente("btnGuardar");
+}
 
+buscarPorRol = function () {
+    let empleadoRol = recuperarTexto("txtBusquedaCedulaRol");
+    let siExiste = buscarEmpleado(empleadoRol);
+    if (siExiste) {
+        mostrarTexto("infoCedula", siExiste.cedula);
+        mostrarTexto("infoSueldo", siExiste.sueldo);
+        mostrarTexto("infoNombre", siExiste.nombre + " " + siExiste.apellido);
+    }else{
+        alert("EL EMPLEADO NO EXISTE");
+    }
 }
