@@ -190,12 +190,58 @@ guardarRol = function () {
 
     let aporteEmpleador = calcularAporteEmpleador(sueldo);
     let rol = {};
-    rol.cedula=cedula;
-    rol.nombre=nombre;
-    rol.sueldo=sueldo;
-    rol.agregarEmpleado=aporteEmpleador;
+    rol.cedula = cedula;
+    rol.nombre = nombre;
+    rol.sueldo = sueldo;
+    rol.agregarEmpleado = aporteEmpleador;
 
     roles.push(rol);
-    mostrarTexto("lblErrorDescuentos","EXITO");
+    mostrarTexto("lblErrorDescuentos", "EXITO");
     deshabilitarComponente("btnGuardar");
+}
+
+mostrarRoles = function () {
+    // Obtenemos el div donde se mostrará la tabla
+    let divResumen = document.getElementById("tablaEmpleados");
+    // Si no hay roles, mostramos un mensaje
+    if (roles.length === 0) {
+        divResumen.innerHTML = "<p>No existen roles registrados.</p>";
+        return;
+    }
+    // Creamos la estructura de la tabla
+    let tabla = "<table border='1' style='border-collapse: collapse; width: 100%; text-align: center;'>";
+    tabla += "<tr><th>CÉDULA</th><th>NOMBRE</th><th>VALOR A PAGAR</th><th>APORTE EMPLEADO</th><th>APORTE EMPLEADOR</th></tr>";
+    // Recorremos el arreglo y agregamos una fila por cada objeto
+    for (let i = 0; i < roles.length; i++) {
+        let rol = roles[i];
+        tabla += `
+            <tr>
+                <td>${rol.cedula}</td>
+                <td>${rol.nombre}</td>
+                <td>${rol.sueldo.toFixed(2)}</td>
+                <td>${rol.aporteEmpleado ? rol.aporteEmpleado.toFixed(2) : "0.00"}</td>
+                <td>${rol.aporteEmpleador.toFixed(2)}</td>
+            </tr>
+        `;
+    }
+    tabla += "</table>";
+    // Insertamos la tabla en el div
+    divResumen.innerHTML = tabla;
+}
+
+function mostrarTotales() {
+    let totalEmpleado;
+    let totalEmpleador;
+    let totalAPagar;
+    // Recorremos el arreglo roles y acumulamos los valores
+    for (let i = 0; i < roles.length; i++) {
+        let rol = roles[i];
+        totalEmpleado += rol.aporteEmpleado; totalEmpleador += rol.aporteEmpleador;
+    totalAPagar = totalEmpleado + totalEmpleador;
+    }
+    mostrarTexto("infoAporteEmpleado",totalEmpleado);
+    mostrarTexto("infoAporteEmpresa",totalEmpleador);
+    mostrarTexto("infoTotalPago",totalAPagar);
+    let totalNomina=totalEmpleado+totalEmpleador+totalAPagar;
+    mostrarTexto("lblNomina",totalNomina)
 }
