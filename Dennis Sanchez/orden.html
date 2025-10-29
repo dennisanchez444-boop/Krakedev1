@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="orden.js"></script>
+    <script src="utilitarios.js"></script>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <input type="text" id="txtNombre" />
+    <h3 id="lblError1"></h3>
+    <input type="text" id="txtEdad" />
+    <h3 id="lblError2"></h3>
+    <input type="button" value="GUARDAR" onclick="agregarPersona();" />
+    <input type="button" value="ENCONTRAR MAYOR" onclick="determinarMayor();"/>
+    <input type="button" value="ENCONTRAR MENOR" onclick="determinarMenor();"/>
+    <div id="tablaClientes">
+
+    </div>
+    <div id="lblMayor"></div>
+    <div id="lblMenor"></div>
+</body>
+
+</html>
